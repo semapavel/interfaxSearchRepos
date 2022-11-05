@@ -56,7 +56,7 @@ const Main = () => {
 
       {isFetching === false ? (
         users.map((user) => 
-        <Link key={user.id} to={`/${user.login}`} >
+        <Link key={user.id} to={`/interfaxSearchRepos/${user.login}`} >
           <User user={user}  />
         </Link>)
       ) : (
