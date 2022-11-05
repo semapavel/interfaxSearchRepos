@@ -31,7 +31,7 @@ const CommitsPage = () => {
     <div>
     {isFetching === false ? (
 			<div className='commit_body'>
-      <Link to={`/${login}`}>
+      <Link to={`/interfaxSearchRepos/${login}`}>
       <Button
       name={'Назад'}/>
     </Link>

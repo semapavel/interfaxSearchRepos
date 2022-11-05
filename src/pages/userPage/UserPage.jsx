@@ -37,7 +37,7 @@ const UserPage = () => {
             </h1>
           </div>
           <div className="user_body">
-            <Link to='/'>
+            <Link to='/interfaxSearchRepos'>
               <Button 
               name={'Вернуться к поиску'}/>
           </Link>
@@ -54,7 +54,7 @@ const UserPage = () => {
                 {repos.map((repo) => (
                   <tr key={repo.id}>
                     <td className="user_body-table-row">
-                      <Link className="user_body-table-row-link" to={`/${user.login}/${repo.name}`}>
+                      <Link className="user_body-table-row-link" to={`/interfaxSearchRepos/${user.login}/${repo.name}`}>
                         {repo.name}
                       </Link>
                     </td>
