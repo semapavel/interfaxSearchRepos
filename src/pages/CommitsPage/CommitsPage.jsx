@@ -26,7 +26,7 @@ const CommitsPage = () => {
     useEffect(() => {
 		dispatch(getCommits(login, repoName, perPage, currentPage));
 	  }, [repoName]);
-   
+    // const date = new Date(commit.commit.author.date).toLocaleDateString() 
   return (
     <div>
     {isFetching === false ? (
@@ -57,7 +57,13 @@ const CommitsPage = () => {
 			</div>      ) : (
 			<div className="fetching"></div>
 		  )}
-
+      <Pagination
+      setCurrentPage={setCurrentPage}
+      currentPage={currentPage}
+      totalCount={totalCount}
+      perPage={perPage}
+      pages = {pagesCommits}
+    />
 		</div>
   )
 }

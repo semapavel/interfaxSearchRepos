@@ -5,7 +5,7 @@ const SET_FIRST_ROW_REPO = "SET_FIRST_ROW_REPO"
 const SET_CURRENT_PAGE = "SET_CURRENT_PAGE"
 
 const defaultState = {
-  items: [123],
+  items: [],
   user: {},
   isFetching: false,
   currentPage:1,
