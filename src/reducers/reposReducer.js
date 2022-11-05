@@ -10,7 +10,6 @@ const defaultState = {
   isFetching: false,
   currentPage:1,
 	perPage:10,
-	totalCount:0,
   firstRowRepo:['Наименование', 'Язык программирования', 'Описание', 'Количество звезд']
 };
 
@@ -20,7 +19,6 @@ export default function reposReducer(state = defaultState, action) {
       return {
         ...state,
         items: action.payload,
-        totalCount: action.payload.total_count,
       }
     case SET_USER:
       return {

@@ -3,7 +3,6 @@ import { Link, useParams } from "react-router-dom";
 import { getRepos } from "../actions/repos";
 import { useDispatch, useSelector } from "react-redux";
 import { setCurrentPage } from "../../reducers/reposReducer";
-import Pagination from "../../components/pagination/Pagination";
 import Button from "../../components/button/Button";
 
 import "./userpage.less";
@@ -17,9 +16,7 @@ const UserPage = () => {
   const isFetching = useSelector((state) => state.repos.isFetching);
   const firstRowRepo = useSelector((state) => state.repos.firstRowRepo);
   const currentPage = useSelector((state) => state.repos.currentPage);
-  const totalCount = useSelector((state) => state.repos.totalCount);
   const perPage = useSelector((state) => state.repos.perPage);
-  const pagesRepos = [];
 
   useEffect(() => {
     dispatch(getRepos(login, perPage, currentPage));
@@ -37,11 +34,27 @@ const UserPage = () => {
             </h1>
           </div>
           <div className="user_body">
-            <Link to='/interfaxSearchRepos'>
+            <Link to='/'>
               <Button 
+              onClick={() => dispatch(setCurrentPage(1))}
               name={'Вернуться к поиску'}/>
           </Link>
             <h2>Список репозиториев</h2>
+            <div className="user_body-nav">
+            <span className={ currentPage == 1 ? "user_body-nav-btn" : "" }>
+              <Button
+                onClick={() => dispatch(setCurrentPage(currentPage-1))}
+                name="Назад"
+            />
+            </span>
+            <span className={ repos.length < 10 ? "user_body-nav-btn" : "" }>
+              <Button
+                onClick={() => dispatch(setCurrentPage(currentPage+1))}
+                name="Далее"
+              />
+            </span>
+
+            </div>
             <table className="user_body-table">
               <tbody>
                 <tr>
@@ -54,7 +67,7 @@ const UserPage = () => {
                 {repos.map((repo) => (
                   <tr key={repo.id}>
                     <td className="user_body-table-row">
-                      <Link className="user_body-table-row-link" to={`/interfaxSearchRepos/${user.login}/${repo.name}`}>
+                      <Link className="user_body-table-row-link" to={`/${user.login}/${repo.name}`}>
                         {repo.name}
                       </Link>
                     </td>
@@ -67,18 +80,25 @@ const UserPage = () => {
                 ))}
               </tbody>
             </table>
+            <div className="user_body-nav">
+            <span className={ (currentPage == 1 || repos.length == 0)  ? "user_body-nav-btn" : "" }>
+              <Button
+                onClick={() => dispatch(setCurrentPage(currentPage-1))}
+                name="Назад"
+              />
+            </span>
+            <span className={ repos.length < 10 ? "user_body-nav-btn" : "" }>
+                <Button
+                  onClick={() => dispatch(setCurrentPage(currentPage+1))}
+                  name="Далее"
+                />
+                </span>
+            </div>
           </div>
         </div>
       ) : (
         <div className="fetching"></div>
       )}
-        <Pagination
-          setCurrentPage={setCurrentPage}
-          currentPage={currentPage}
-          totalCount={totalCount}
-          perPage={perPage}
-          pages = {pagesRepos}
-        />
     </div>
   );
 };

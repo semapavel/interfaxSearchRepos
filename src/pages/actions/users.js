@@ -17,7 +17,6 @@ export const getUsers = (searchQuery, currentPage, perPage) => {
         `https://api.github.com/search/users?q=${searchQuery}&per_page=${perPage}&page=${currentPage}`
       );
       dispatch(setUsers(response.data));
-      // console.log(response.data);
     } catch (e) {
       dispatch(setIsFetching(false));
       dispatch(setFetchError(true));

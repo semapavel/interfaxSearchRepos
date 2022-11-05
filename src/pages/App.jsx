@@ -1,6 +1,5 @@
 import React from "react";
 import "./app.less";
-import { useDispatch, useSelector } from "react-redux/es/exports";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Main from "./main/Main";
 import UserPage from "./userPage/UserPage";
@@ -11,9 +10,9 @@ const App = () => {
     <BrowserRouter>
       <div className="container">
         <Routes>
-          <Route path="/interfaxSearchRepos" element={<Main />} />
-          <Route path="/interfaxSearchRepos/:login" element={<UserPage />} />
-          <Route path="/interfaxSearchRepos/:login/:repoName" element={<CommitsPage />} />
+          <Route path="/" element={<Main />} />
+          <Route path="/:login" element={<UserPage />} />
+          <Route path="/:login/:repoName" element={<CommitsPage />} />
         </Routes>
       </div>
     </BrowserRouter>

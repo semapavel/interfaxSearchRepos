@@ -54,9 +54,13 @@ const Main = () => {
         />
       </div>
 
+      {users.length == 0 ? (
+        <div>Пользователь не найден, введите корректный запрос</div>
+      ) : ''}
+
       {isFetching === false ? (
         users.map((user) => 
-        <Link key={user.id} to={`/interfaxSearchRepos/${user.login}`} >
+        <Link key={user.id} to={`/${user.login}`} >
           <User user={user}  />
         </Link>)
       ) : (

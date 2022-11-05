@@ -8,7 +8,6 @@ const defaultState = {
   isFetching: false,
   currentPage:1,
 	perPage:10,
-	totalCount:0,
   firstRowCommit:['Автор', 'Хэш коммита', 'Дата']
 };
 

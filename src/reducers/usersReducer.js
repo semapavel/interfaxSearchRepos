@@ -11,7 +11,6 @@ const defaultState = {
 	perPage:10,
 	totalCount:0,
 	isFetchError: false,
-
 }
 
 

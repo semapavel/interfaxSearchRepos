@@ -12,7 +12,6 @@ export const getCommits = (user, repoName, perPage, currentPage) => {
         `https://api.github.com/repos/${user}/${repoName}/commits?per_page=${perPage}&page=${currentPage}`
       );
       dispatch(setCommits(resCommits.data));
-      console.log(resCommits.data);
       dispatch(setIsFetching(false));
     } catch (e) {
       dispatch(setIsFetching(false));
